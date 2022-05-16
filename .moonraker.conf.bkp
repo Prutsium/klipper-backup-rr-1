@@ -1,98 +1,94 @@
 [server]
-host: 0.0.0.0
-port: 7125
-enable_debug_logging: False
+host = 0.0.0.0
+port = 7125
+enable_debug_logging = False
 
 [file_manager]
-config_path: ~/klipper_config
-log_path: ~/klipper_logs
-queue_gcode_uploads: True
-# Configure the Job Queue to start a queued print when Klipper reports as
-# ready.
+config_path = ~/klipper_config
+log_path = ~/klipper_logs
+queue_gcode_uploads = True
 
 [job_queue]
-load_on_startup: True
-# Configure the job_transition_delay and job_transition_gcode options
-# if desired.  Note that they do no apply to prints loaded on startup.
+load_on_startup = True
 
 [authorization]
-cors_domains:
-    *://app.fluidd.xyz
-    https://my.mainsail.xyz
-    http://my.mainsail.xyz
-    http://*.local
-    http://*.lan
-trusted_clients:
-    127.0.0.1
-    10.0.0.0/8
-    127.0.0.0/8
-    169.254.0.0/16
-    172.16.0.0/12
-    192.168.0.0/16
-    FE80::/10
-    ::1/128
+cors_domains = 
+	*://app.fluidd.xyz
+	https://my.mainsail.xyz
+	http://my.mainsail.xyz
+	http://*.local
+	http://*.lan
+trusted_clients = 
+	127.0.0.1
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
 
-# enables partial support of Octoprint API
 [octoprint_compat]
 
-# enables moonraker to track and store print history.
 [history]
 
-# this enables moonraker's update manager
 [update_manager]
 
 [mqtt]
-address: 192.168.99.5
-port: 1883
-mqtt_protocol: v3.1.1
-enable_moonraker_api: True
-instance_name: ratrig
-default_qos: 0
+address = 192.168.99.5
+port = 1883
+mqtt_protocol = v3.1.1
+enable_moonraker_api = True
+instance_name = ratrig
+default_qos = 0
 
 [power printer]
-type: tasmota
-address: 192.168.98.172
-password:
-restart_klipper_when_powered: True
-on_when_job_queued: True
-restart_delay: 7
+type = tasmota
+address = 192.168.98.172
+password = 
+restart_klipper_when_powered = True
+on_when_job_queued = True
+restart_delay = 7
 
 [update_manager client RatOS]
-type: git_repo
-path: /home/pi/klipper_config/config
-origin: https://github.com/Rat-OS/RatOS-configuration.git
-install_script: /home/pi/klipper_config/config/scripts/ratos-install.sh
+type = git_repo
+path = /home/pi/klipper_config/config
+origin = https://github.com/Rat-OS/RatOS-configuration.git
+install_script = /home/pi/klipper_config/config/scripts/ratos-install.sh
 
 [update_manager client RatOSTheme]
-type: git_repo
-path: /home/pi/klipper_config/.theme
-origin: https://github.com/Rat-OS/RatOS-theme.git
-is_system_service: False
+type = git_repo
+path = /home/pi/klipper_config/.theme
+origin = https://github.com/Rat-OS/RatOS-theme.git
+is_system_service = False
 
 [update_manager mainsail]
-type: web_beta
-repo: mainsail-crew/mainsail
-path: ~/mainsail
+type = web
+channel = beta
+repo = mainsail-crew/mainsail
+path = ~/mainsail
 
 [update_manager KlipperScreen]
-type: git_repo
-path: ~/KlipperScreen
-origin: https://github.com/jordanruthe/KlipperScreen.git
-env: ~/.KlipperScreen-env/bin/python
-requirements: scripts/KlipperScreen-requirements.txt
-install_script: scripts/KlipperScreen-install.sh
+type = git_repo
+path = ~/KlipperScreen
+origin = https://github.com/jordanruthe/KlipperScreen.git
+env = ~/.KlipperScreen-env/bin/python
+requirements = scripts/KlipperScreen-requirements.txt
+install_script = scripts/KlipperScreen-install.sh
+managed_services = KlipperScreen
 
 [update_manager client moonraker-telegram-bot]
-type: git_repo
-path: ~/moonraker-telegram-bot
-origin: https://github.com/nlef/moonraker-telegram-bot.git
-env: ~/moonraker-telegram-bot-env/bin/python
-requirements: scripts/requirements.txt
-install_script: scripts/install.sh
+type = git_repo
+path = ~/moonraker-telegram-bot
+origin = https://github.com/nlef/moonraker-telegram-bot.git
+env = ~/moonraker-telegram-bot-env/bin/python
+requirements = scripts/requirements.txt
+install_script = scripts/install.sh
 
 [update_manager pam]
-type: git_repo
-primary_branch: main
-path: ~/pam
-origin: https://github.com/HelgeKeck/pam.git
-is_system_service: False
+type = git_repo
+primary_branch = main
+path = ~/pam
+origin = https://github.com/HelgeKeck/pam.git
+is_system_service = False
+
