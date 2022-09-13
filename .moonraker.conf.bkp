@@ -42,6 +42,8 @@ mqtt_protocol = v3.1.1
 enable_moonraker_api = True
 instance_name = ratrig
 default_qos = 0
+status_objects = 
+	temperature_sensor=chamber_temp
 
 [power printer]
 type = tasmota
